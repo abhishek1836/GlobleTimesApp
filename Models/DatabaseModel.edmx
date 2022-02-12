@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Demo_LearningModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sales">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Customer_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Product_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Vendor_Name" Type="varchar" MaxLength="50" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="20" />
+          <Property Name="Location" Type="varchar" MaxLength="20" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="Salary" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Magic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="First_Name" Type="varchar" MaxLength="255" />
+          <Property Name="Last_Name" Type="varchar" MaxLength="255" />
+          <Property Name="rank" Type="int" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_mailingaddress">
+          <Key>
+            <PropertyRef Name="Address_ID" />
+          </Key>
+          <Property Name="Address_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeNumber" Type="int" />
+          <Property Name="HouseNumber" Type="varchar" MaxLength="50" />
+          <Property Name="StreetAddress" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="25" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_marks">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Marks" Type="decimal" Precision="20" Scale="0" />
+          <Property Name="Course" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Demo_Learning.dbo.tbl_physicaladdress' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_physicaladdress">
+          <Key>
+            <PropertyRef Name="Address_ID" />
+          </Key>
+          <Property Name="Address_ID" Type="int" Nullable="false" />
+          <Property Name="EmployeeNumber" Type="int" />
+          <Property Name="HouseNumber" Type="varchar" MaxLength="50" />
+          <Property Name="StreetAddress" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="25" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tbl_PrimaryKey">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="First_Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tbl_students">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Roll_Number" Type="int" />
+          <Property Name="Course" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="Demo_LearningModelStoreContainer">
+          <EntitySet Name="sales" EntityType="Self.sales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Employees" EntityType="Self.tbl_Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Magic" EntityType="Self.tbl_Magic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_mailingaddress" EntityType="Self.tbl_mailingaddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_marks" EntityType="Self.tbl_marks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PrimaryKey" EntityType="Self.tbl_PrimaryKey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_students" EntityType="Self.tbl_students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_physicaladdress" EntityType="Self.tbl_physicaladdress" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_physicaladdress].[Address_ID] AS [Address_ID], 
+    [tbl_physicaladdress].[EmployeeNumber] AS [EmployeeNumber], 
+    [tbl_physicaladdress].[HouseNumber] AS [HouseNumber], 
+    [tbl_physicaladdress].[StreetAddress] AS [StreetAddress], 
+    [tbl_physicaladdress].[City] AS [City], 
+    [tbl_physicaladdress].[PostalCode] AS [PostalCode]
+    FROM [dbo].[tbl_physicaladdress] AS [tbl_physicaladdress]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Demo_LearningModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sale">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Customer_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Vendor_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="tbl_Employees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Salary" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_Magic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="First_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="rank" Type="Int32" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="tbl_mailingaddress">
+          <Key>
+            <PropertyRef Name="Address_ID" />
+          </Key>
+          <Property Name="Address_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeNumber" Type="Int32" />
+          <Property Name="HouseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StreetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_marks">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Marks" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="Course" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_PrimaryKey">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="First_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_students">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Roll_Number" Type="Int32" />
+          <Property Name="Course" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_physicaladdress">
+          <Key>
+            <PropertyRef Name="Address_ID" />
+          </Key>
+          <Property Name="Address_ID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeNumber" Type="Int32" />
+          <Property Name="HouseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StreetAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="Demo_LearningEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sales" EntityType="Self.sale" />
+          <EntitySet Name="tbl_Employees" EntityType="Self.tbl_Employees" />
+          <EntitySet Name="tbl_Magic" EntityType="Self.tbl_Magic" />
+          <EntitySet Name="tbl_mailingaddress" EntityType="Self.tbl_mailingaddress" />
+          <EntitySet Name="tbl_marks" EntityType="Self.tbl_marks" />
+          <EntitySet Name="tbl_PrimaryKey" EntityType="Self.tbl_PrimaryKey" />
+          <EntitySet Name="tbl_students" EntityType="Self.tbl_students" />
+          <EntitySet Name="tbl_physicaladdress" EntityType="Self.tbl_physicaladdress" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Demo_LearningModelStoreContainer" CdmEntityContainer="Demo_LearningEntities">
+          <EntitySetMapping Name="sales">
+            <EntityTypeMapping TypeName="Demo_LearningModel.sale">
+              <MappingFragment StoreEntitySet="sales">
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Vendor_Name" ColumnName="Vendor_Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Employees">
+            <EntityTypeMapping TypeName="Demo_LearningModel.tbl_Employees">
+              <MappingFragment StoreEntitySet="tbl_Employees">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Magic">
+            <EntityTypeMapping TypeName="Demo_LearningModel.tbl_Magic">
+              <MappingFragment StoreEntitySet="tbl_Magic">
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_mailingaddress">
+            <EntityTypeMapping TypeName="Demo_LearningModel.tbl_mailingaddress">
+              <MappingFragment StoreEntitySet="tbl_mailingaddress">
+                <ScalarProperty Name="Address_ID" ColumnName="Address_ID" />
+                <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_marks">
+            <EntityTypeMapping TypeName="Demo_LearningModel.tbl_marks">
+              <MappingFragment StoreEntitySet="tbl_marks">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Student_Name" ColumnName="Student_Name" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PrimaryKey">
+            <EntityTypeMapping TypeName="Demo_LearningModel.tbl_PrimaryKey">
+              <MappingFragment StoreEntitySet="tbl_PrimaryKey">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_students">
+            <EntityTypeMapping TypeName="Demo_LearningModel.tbl_students">
+              <MappingFragment StoreEntitySet="tbl_students">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Student_Name" ColumnName="Student_Name" />
+                <ScalarProperty Name="Roll_Number" ColumnName="Roll_Number" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_physicaladdress">
+            <EntityTypeMapping TypeName="Demo_LearningModel.tbl_physicaladdress">
+              <MappingFragment StoreEntitySet="tbl_physicaladdress">
+                <ScalarProperty Name="Address_ID" ColumnName="Address_ID" />
+                <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
